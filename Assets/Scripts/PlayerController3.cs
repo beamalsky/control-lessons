@@ -1,20 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
-public class PlayerController2 : MonoBehaviour {
+public class PlayerController3 : MonoBehaviour {
 
 	public Text countText;
 	public Text winText;
 
 	private int count;
-
-	//current scene
-	private int x;
-	//next scene
-	private int y;
-
 
 	void Start ()
 	{
@@ -34,14 +27,7 @@ public class PlayerController2 : MonoBehaviour {
 	void SetCountText () {
 		countText.text = "Cube Count = " + count.ToString ();
 		if (count >= 14) {
-			AdvanceScene ();
+			winText.text = "You win!";
 		}
 	}
-
-	void AdvanceScene () {
-		x = SceneManager.GetActiveScene ().buildIndex;
-		y = x + 1;
-		SceneManager.LoadScene (y);
-	}
-
 }

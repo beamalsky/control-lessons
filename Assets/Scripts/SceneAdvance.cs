@@ -1,19 +1,19 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class SceneAdvance : MonoBehaviour {
 
-	private int x
+	//current scene
+	private int x;
+	//next scene
+	private int y;
 
-	void Start () {
-		
-		x = Scene.buildIndex
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	void AdvanceFunction () {
+		x = SceneManager.GetActiveScene ().buildIndex;
+		y = x + 1;
+		SceneManager.LoadScene (y);
+		Debug.Log("I've just been clicked");
 	}
 }
-
