@@ -8,6 +8,7 @@ public class PlayerController2 : MonoBehaviour {
 	public Text countText;
 	public Text winText;
 
+	private Transform tf;
 	private int count;
 
 	//current scene
@@ -18,9 +19,19 @@ public class PlayerController2 : MonoBehaviour {
 
 	void Start ()
 	{
+		tf = GetComponent<Transform>();
 		count = 0;
 		SetCountText ();
 		winText.text = "";
+		x = SceneManager.GetActiveScene ().buildIndex;
+		y = x + 1;
+	}
+
+	//reset scene if ball falls
+	void Update () {
+		if (tf.position.y < -30) {
+			SceneManager.LoadScene (x);
+		}
 	}
 
 	void OnTriggerEnter(Collider other) {
@@ -39,8 +50,6 @@ public class PlayerController2 : MonoBehaviour {
 	}
 
 	void AdvanceScene () {
-		x = SceneManager.GetActiveScene ().buildIndex;
-		y = x + 1;
 		SceneManager.LoadScene (y);
 	}
 

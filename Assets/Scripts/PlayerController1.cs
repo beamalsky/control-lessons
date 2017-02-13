@@ -11,6 +11,7 @@ public class PlayerController1 : MonoBehaviour {
 	public Button advanceButton;
 
 	private Rigidbody rb;
+	private Transform tf;
 	private int count;
 
 	//current scene
@@ -21,9 +22,12 @@ public class PlayerController1 : MonoBehaviour {
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody>();
+		tf = GetComponent<Transform>();
 		count = 0;
 		SetCountText ();
 		winText.text = "";
+		x = SceneManager.GetActiveScene ().buildIndex;
+		y = x + 1;
 	}
 
 	void FixedUpdate ()
@@ -34,6 +38,11 @@ public class PlayerController1 : MonoBehaviour {
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
 		rb.AddForce (movement * speed);
+
+		//reset scene if ball falls
+		if (tf.position.y < -30) {
+			SceneManager.LoadScene (x);
+		}
 	}
 
 	void OnTriggerEnter(Collider other) {
@@ -53,8 +62,6 @@ public class PlayerController1 : MonoBehaviour {
 	}
 
 	void AdvanceScene () {
-		x = SceneManager.GetActiveScene ().buildIndex;
-		y = x + 1;
 		SceneManager.LoadScene (y);
 	}
 }
