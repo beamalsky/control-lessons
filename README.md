@@ -1,4 +1,6 @@
 # Control Lessons
 Learning Unity and thinking abt control.
 
-Based on the "roll-a-ball" tutorial: https://unity3d.com/learn/tutorials/projects/roll-ball-tutorial
+Playable here: https://beamalsky.itch.io/control-lessons
+
+Based on the "roll-a-ball" tutorial here: https://unity3d.com/learn/tutorials/projects/roll-ball-tutorial
